@@ -12,6 +12,7 @@ Route::prefix('{locale}')
     ->where(['locale' => 'en|bn'])
     ->group(function (): void {
         Route::get('/', [SiteController::class, 'home'])->name('site.home');
+        Route::get('/software', [SiteController::class, 'software'])->name('site.software');
         Route::get('/services', [SiteController::class, 'services'])->name('site.services');
         Route::get('/portfolio', [SiteController::class, 'portfolio'])->name('site.portfolio');
         Route::get('/about', [SiteController::class, 'about'])->name('site.about');
@@ -35,6 +36,7 @@ Route::prefix('admin')->group(function (): void {
     Route::middleware(['auth', 'admin'])->group(function (): void {
     Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
     Route::get('/hero-slides', [AdminController::class, 'heroSlides'])->name('admin.hero-slides');
+    Route::get('/software', [AdminController::class, 'software'])->name('admin.software');
     Route::get('/services', [AdminController::class, 'services'])->name('admin.services');
     Route::get('/portfolio', [AdminController::class, 'portfolio'])->name('admin.portfolio');
     Route::get('/team', [AdminController::class, 'team'])->name('admin.team');

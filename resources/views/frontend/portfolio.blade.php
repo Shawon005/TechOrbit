@@ -19,7 +19,11 @@
 
         <div class="project-grid project-grid-large">
             @foreach ($projects as $project)
+                @php $projectUrl = $project['link'] ?? null; @endphp
                 <article class="project-card" data-filter-item="{{ $project['category'] }}">
+                    @if ($projectUrl)
+                        <a href="{{ $projectUrl }}" class="project-card-link" aria-label="Open {{ $project['title'] }}"></a>
+                    @endif
                     <div class="project-visual gradient-{{ $project['gradient'] }}">
                         <img src="{{ $project['image'] ?? '/assets/images/project-card.svg' }}" alt="{{ $project['title'] }}" loading="lazy">
                         <span>{{ strtoupper($project['category']) }}</span>

@@ -18,7 +18,6 @@
                         <img src="{{ $service['image'] ?? '/assets/images/service-card.svg' }}" alt="{{ $service['title'] }}" loading="lazy">
                     </div>
                     <div class="service-detail-head">
-                        <!-- <span class="service-icon">{{ $service['icon'] }}</span> -->
                         <div>
                             <h2>{{ $service['title'] }}</h2>
                             <p>{{ $service['description'] }}</p>
@@ -36,22 +35,34 @@
     </div>
 </section>
 
-<section class="section-space section-muted">
+<section class="section-space section-muted work-roadmap-section">
     <div class="container">
-        <div class="section-heading">
-            <span class="section-label">{{ $locale === 'bn' ? 'আমাদের প্রক্রিয়া' : 'How We Work' }}</span>
-            <h2>{{ $locale === 'bn' ? 'সুস্পষ্ট ধাপে এগোই' : 'A Clear Delivery Flow' }}</h2>
-            <p>{{ $locale === 'bn' ? 'প্রত্যেক পর্যায়ে পরিকল্পনা, দৃশ্যমানতা এবং ফিডব্যাক রাখি।' : 'Each step keeps planning, visibility, and feedback close to the work.' }}</p>
-        </div>
+        <div class="work-roadmap">
+            <div class="work-roadmap-intro">
+                <span class="section-label">{{ $locale === 'bn' ? 'আমাদের প্রক্রিয়া' : 'How We Work' }}</span>
+                <h2>{{ $locale === 'bn' ? 'পরিকল্পনা থেকে লঞ্চ পর্যন্ত একটি পরিষ্কার রোডম্যাপ' : 'A Clear Roadmap From Planning to Launch' }}</h2>
+                <p>{{ $locale === 'bn' ? 'প্রতিটি পর্যায়ে আমরা লক্ষ্য, নকশা, ডেভেলপমেন্ট এবং সাপোর্টকে একই ধারার মধ্যে রাখি, যাতে কাজ থেমে না যায় এবং সিদ্ধান্তগুলো সবসময় পরিষ্কার থাকে।' : 'We keep strategy, design, development, and post-launch support connected in one visible flow so progress stays steady and decisions stay clear.' }}</p>
 
-        <div class="process-grid">
-            @foreach ($process as $step)
-                <article class="process-card">
-                    <span>{{ $step['step'] }}</span>
-                    <h3>{{ $step['title'] }}</h3>
-                    <p>{{ $step['copy'] }}</p>
-                </article>
-            @endforeach
+                <div class="work-roadmap-actions">
+                    <a href="{{ route('site.software', ['locale' => $locale]) }}" class="software-btn software-btn-call">{{ $locale === 'bn' ? 'ডেমো দেখুন' : 'See Demo' }}</a>
+                </div>
+            </div>
+
+            <div class="work-roadmap-stage" aria-label="{{ $locale === 'bn' ? 'কাজের ধাপসমূহ' : 'Process timeline' }}">
+                <div class="work-roadmap-line" aria-hidden="true"></div>
+
+                @foreach ($process as $step)
+                    <article class="work-step-card work-step-{{ $loop->iteration }}">
+                        <span class="work-step-node" aria-hidden="true"><span></span></span>
+                        <!-- <span class="work-step-ghost" aria-hidden="true">{{ $loop->iteration }}</span> -->
+                        <div class="work-step-body">
+                            <span class="work-step-kicker">{{ $step['step'] }}</span>
+                            <h3>{{ $step['title'] }}</h3>
+                            <p>{{ $step['copy'] }}</p>
+                        </div>
+                    </article>
+                @endforeach
+            </div>
         </div>
     </div>
 </section>

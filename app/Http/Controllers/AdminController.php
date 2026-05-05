@@ -43,6 +43,11 @@ class AdminController extends Controller
         return $this->collectionPage($request, 'hero-slides');
     }
 
+    public function software(Request $request): View
+    {
+        return $this->collectionPage($request, 'software');
+    }
+
     public function services(Request $request): View
     {
         return $this->collectionPage($request, 'services');
@@ -86,9 +91,11 @@ class AdminController extends Controller
 
     public function updateCollection(Request $request, string $section, string $id): RedirectResponse
     {
+      
         $definition = $this->sectionDefinition($section);
         $current = $this->store->find($definition['path'], $id) ?? [];
         $payload = $this->validatedPayload($request, $definition['fields'], $section, $current);
+         
         $this->store->update($definition['path'], $id, $payload);
 
         return redirect()
@@ -189,6 +196,13 @@ class AdminController extends Controller
                 $item['slug'] ?? '',
                 'Active',
             ],
+            'software' => [
+                (string) ($index + 1),
+                data_get($item, 'title.en', ''),
+                Str::limit(data_get($item, 'excerpt.en', ''), 56),
+                ! empty($item['video_url']) ? 'Demo linked' : 'No video',
+                'Published',
+            ],
             'portfolio' => [
                 (string) ($index + 1),
                 data_get($item, 'title.en', ''),
@@ -273,11 +287,11 @@ class AdminController extends Controller
     private function validatedPayload(Request $request, array $fields, string $section, array $current = []): array
     {
         $rules = [];
-
+        
         foreach ($fields as $field) {
-            $rules[$field['path']] = $field['rules'] ?? ['nullable', 'string', 'max:1000'];
+            $rules[$field['path']] = $field['rules'] ?? ['nullable', 'string','max: 1000'];
         }
-
+       
         $validated = $request->validate($rules);
         $payload = [];
 
@@ -347,7 +361,7 @@ class AdminController extends Controller
         $filename = Str::uuid().'.'.$extension;
         $file->move($directory, $filename);
 
-        return '/uploads/techorbit/'.$section.'/'.$filename;
+        return '/public/uploads/techorbit/'.$section.'/'.$filename;
     }
 
     private function adminData(array $site, string $activeKey, array $data = []): array
@@ -389,6 +403,7 @@ class AdminController extends Controller
                 'section' => 'Content',
                 'items' => [
                     ['key' => 'hero-slides', 'label' => 'Hero Slides', 'route' => 'admin.hero-slides', 'badge' => null],
+                    ['key' => 'software', 'label' => 'Our Software', 'route' => 'admin.software', 'badge' => null],
                     ['key' => 'services', 'label' => 'Services', 'route' => 'admin.services', 'badge' => null],
                     ['key' => 'portfolio', 'label' => 'Portfolio', 'route' => 'admin.portfolio', 'badge' => null],
                     ['key' => 'team', 'label' => 'Team', 'route' => 'admin.team', 'badge' => null],
@@ -447,6 +462,27 @@ class AdminController extends Controller
                     ['path' => 'subtitle.bn', 'label' => 'Subtitle (BN)', 'type' => 'textarea', 'rules' => ['required', 'string', 'max:500']],
                 ],
             ],
+            'software' => [
+                'path' => 'software',
+                'route' => 'admin.software',
+                'title' => 'Our Software',
+                'singular' => 'Software item',
+                'description' => 'Manage featured software products, marketing copy, preview images, and demo video links for the homepage showcase.',
+                'columns' => ['Order', 'Software', 'Summary', 'Demo', 'Status', 'Actions'],
+                'preview_title' => 'Software Showcase Preview',
+                'fields' => [
+                    ['path' => 'badge.en', 'label' => 'Badge (EN)', 'rules' => ['required', 'string', 'max:120']],
+                    ['path' => 'badge.bn', 'label' => 'Badge (BN)', 'rules' => ['required', 'string', 'max:120']],
+                    ['path' => 'image', 'label' => 'Software Image', 'type' => 'file', 'rules' => ['nullable', 'file', 'mimes:jpg,jpeg,png,webp,svg', 'max:4096'], 'default' => '/assets/images/service-card.svg'],
+                    ['path' => 'title.en', 'label' => 'Title (EN)', 'type' => 'textarea', 'rules' => ['required', 'string', 'max:255']],
+                    ['path' => 'title.bn', 'label' => 'Title (BN)', 'type' => 'textarea', 'rules' => ['required', 'string', 'max:255']],
+                    ['path' => 'excerpt.en', 'label' => 'Excerpt (EN)', 'type' => 'textarea', 'rules' => ['required', 'string', 'max:255']],
+                    ['path' => 'excerpt.bn', 'label' => 'Excerpt (BN)', 'type' => 'textarea', 'rules' => ['required', 'string', 'max:255']],
+                    ['path' => 'description.en', 'label' => 'Description (EN)', 'type' => 'textarea', 'rules' => ['required', 'string', 'max:1000']],
+                    ['path' => 'description.bn', 'label' => 'Description (BN)', 'type' => 'textarea', 'rules' => ['required', 'string', 'max:1000']],
+                    ['path' => 'video_url', 'label' => 'Demo Video URL', 'type' => 'url', 'rules' => ['nullable', 'url', 'max:255']],
+                ],
+            ],
             'services' => [
                 'path' => 'services',
                 'route' => 'admin.services',
@@ -492,6 +528,7 @@ class AdminController extends Controller
                     ['path' => 'category', 'label' => 'Category', 'type' => 'select', 'options' => ['web' => 'Web', 'mobile' => 'Mobile', 'erp' => 'ERP', 'design' => 'Design'], 'rules' => ['required', 'string', 'max:40']],
                     ['path' => 'gradient', 'label' => 'Card Gradient', 'type' => 'select', 'options' => ['mint' => 'Mint', 'sky' => 'Sky', 'violet' => 'Violet', 'coral' => 'Coral', 'lime' => 'Lime', 'sun' => 'Sun'], 'rules' => ['required', 'string', 'max:40']],
                     ['path' => 'year', 'label' => 'Year', 'rules' => ['required', 'string', 'max:10']],
+                    ['path' => 'link', 'label' => 'Project Link', 'type' => 'url', 'rules' => ['nullable', 'url', 'max:255']],
                 ],
             ],
             'team' => [
@@ -564,8 +601,8 @@ class AdminController extends Controller
                     ['path' => 'name', 'label' => 'Client Name', 'rules' => ['required', 'string', 'max:120']],
                     ['path' => 'role.en', 'label' => 'Role (EN)', 'rules' => ['required', 'string', 'max:150']],
                     ['path' => 'role.bn', 'label' => 'Role (BN)', 'rules' => ['required', 'string', 'max:150']],
-                    ['path' => 'message.en', 'label' => 'Message (EN)', 'type' => 'textarea', 'rules' => ['required', 'string', 'max:500']],
-                    ['path' => 'message.bn', 'label' => 'Message (BN)', 'type' => 'textarea', 'rules' => ['required', 'string', 'max:500']],
+                    ['path' => 'message.en', 'label' => 'Message (EN)', 'type' => 'textarea', 'rules' => ['required', 'string', 'max:3000']],
+                    ['path' => 'message.bn', 'label' => 'Message (BN)', 'type' => 'textarea', 'rules' => ['required', 'string', 'max:3000']],
                 ],
             ],
         ];

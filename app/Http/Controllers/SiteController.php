@@ -19,6 +19,20 @@ class SiteController extends Controller
         return view('frontend.home', $this->pageData($locale, 'home'));
     }
 
+    public function software(string $locale): View
+    {
+        $data = $this->pageData($locale, 'home');
+        $data['pageKey'] = 'software';
+        $data['pageTitle'] = $locale === 'bn'
+            ? 'আমাদের সফটওয়্যার | TechOrbit IT'
+            : 'Our Software | TechOrbit IT';
+        $data['pageDescription'] = $locale === 'bn'
+            ? 'TechOrbit IT এর সফটওয়্যার প্রোডাক্টগুলো ডেমো লিংক, সংক্ষিপ্ত বিবরণ এবং ব্যবসা-উপযোগী উপস্থাপনাসহ দেখুন।'
+            : 'Explore TechOrbit IT software products with demo links, product summaries, and business-ready presentation.';
+
+        return view('frontend.software', $data);
+    }
+
     public function services(string $locale): View
     {
         return view('frontend.services', $this->pageData($locale, 'services'));
@@ -86,8 +100,9 @@ class SiteController extends Controller
 
     private function pageData(string $locale, string $pageKey): array
     {
+        
         $site = $this->localizedCatalog($locale);
-
+      
         return array_merge($site, [
             'locale' => $locale,
             'alternateLocale' => $locale === 'en' ? 'bn' : 'en',

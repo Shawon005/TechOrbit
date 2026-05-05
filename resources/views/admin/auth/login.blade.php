@@ -49,8 +49,6 @@
             </form>
 
             <div class="admin-login-note">
-                <strong>Default admin</strong>
-                <span>`admin@techorbitit.com` / `admin123`</span>
             </div>
         </div>
     </section>

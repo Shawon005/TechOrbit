@@ -9,6 +9,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('assets/site.css') }}">
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('assets/images/apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('assets/images/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('assets/images/favicon-16x16.png') }}">
+    <link rel="manifest" href="{{ asset('assets/images/site.webmanifest') }}">
 </head>
 <body class="site-body {{ $locale === 'bn' ? 'locale-bn' : 'locale-en' }}">
 @php
@@ -26,14 +31,19 @@
 <div class="site-shell">
     <header class="site-header js-site-header">
         <div class="container header-row">
-            <a href="{{ route('site.home', ['locale' => $locale]) }}" class="brand-mark">
-                <img src="uploads/logo/Tech_Orbit_IT_logo" alt="">
-                <span>Tech</span>Orbit IT
+            <a href="{{ route('site.home', ['locale' => $locale]) }}" class="brand-mark" style="display: flex; align-items: center;">
+                <img src="{{ asset('assets/images/Tech_Orbit_IT_logo.png') }}" alt="" height="45" loading="lazy" style="margin-right: 0.2rem;">
+                <span>Tech Orbit IT</span>
             </a>
 
             <nav class="desktop-nav" aria-label="Main navigation">
+                
                 @foreach ($navigation as $item)
-                    <a href="{{ route($item['route'], ['locale' => $locale]) }}" class="{{ request()->routeIs($item['route']) ? 'active' : '' }}">
+                    @php
+                        $itemUrl = route($item['route'], ['locale' => $locale]).(! empty($item['fragment']) ? '#'.$item['fragment'] : '');
+                        $isActive = empty($item['fragment']) && request()->routeIs($item['route']);
+                    @endphp
+                    <a href="{{ $itemUrl }}" class="{{ $isActive ? 'active' : '' }}">
                         {{ $item['label'] }}
                     </a>
                 @endforeach
@@ -53,7 +63,7 @@
         <div class="mobile-nav js-mobile-nav">
             <div class="container mobile-nav-links">
                 @foreach ($navigation as $item)
-                    <a href="{{ route($item['route'], ['locale' => $locale]) }}">{{ $item['label'] }}</a>
+                    <a href="{{ route($item['route'], ['locale' => $locale]).(! empty($item['fragment']) ? '#'.$item['fragment'] : '') }}">{{ $item['label'] }}</a>
                 @endforeach
                 <a href="{{ $switchUrl }}">{{ strtoupper($alternateLocale) }} | {{ $alternateLocale === 'bn' ? 'বাংলা' : 'EN' }}</a>
             </div>
@@ -82,7 +92,7 @@
                 <h3>{{ $locale === 'bn' ? 'দ্রুত লিংক' : 'Quick Links' }}</h3>
                 <div class="footer-links">
                     @foreach ($navigation as $item)
-                        <a href="{{ route($item['route'], ['locale' => $locale]) }}">{{ $item['label'] }}</a>
+                        <a href="{{ route($item['route'], ['locale' => $locale]).(! empty($item['fragment']) ? '#'.$item['fragment'] : '') }}">{{ $item['label'] }}</a>
                     @endforeach
                 </div>
             </div>

@@ -55,7 +55,8 @@
             </div>
 
             @if ($errors->any())
-                <div class="admin-alert admin-alert-error">Please review the highlighted fields and try again.</div>
+
+                <div class="admin-alert admin-alert-error">Please review the highlighted fields and try again.{{ $errors->first() }}</div>
             @endif
 
             <form action="{{ $formAction }}" method="POST" enctype="multipart/form-data" class="admin-form-grid">
@@ -84,6 +85,8 @@
                                     <option value="{{ $optionValue }}" @selected(old($field['path'], $field['value']) == $optionValue)>{{ $optionLabel }}</option>
                                 @endforeach
                             </select>
+                        @elseif (($field['type'] ?? 'text') === 'url')
+                            <input type="url" name="{{ $field['input_name'] }}" value="{{ old($field['path'], $field['value']) }}" placeholder="https://example.com">
                         @else
                             <input type="text" name="{{ $field['input_name'] }}" value="{{ old($field['path'], $field['value']) }}">
                         @endif
@@ -101,10 +104,15 @@
             <div class="panel-head">
                 <h2>{{ $previewTitle }}</h2>
             </div>
-
             <div class="admin-preview-list">
                 @foreach ($previewLines as $line)
-                    <div>{{ $line }}</div>
+                    <div>
+                        @if(is_array($line))
+                            {{ $line['en'] ?? '' }} {{-- or 'bn' --}}
+                        @else
+                            {{ $line }}
+                        @endif
+                    </div>
                 @endforeach
             </div>
         </div>

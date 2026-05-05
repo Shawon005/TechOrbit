@@ -165,6 +165,7 @@ class TechOrbitContentStore
     {
         return [
             'heroSlides',
+            'software',
             'services',
             'projects',
             'team',

@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
 return [
     'company' => [
@@ -36,6 +36,7 @@ return [
         ['label' => ['en' => 'About', 'bn' => 'আমাদের সম্পর্কে'], 'route' => 'site.about'],
         ['label' => ['en' => 'Blog', 'bn' => 'ব্লগ'], 'route' => 'site.blog'],
         ['label' => ['en' => 'Contact', 'bn' => 'যোগাযোগ'], 'route' => 'site.contact'],
+        ['label' => ['en' => 'Our Software', 'bn' => 'আমাদের সফটওয়্যার'], 'route' => 'site.software'],
     ],
     'meta' => [
         'home' => [
@@ -75,6 +76,11 @@ return [
         'ready_title' => ['en' => 'Ready to Start Your Project?', 'bn' => 'আপনার প্রজেক্ট শুরু করতে প্রস্তুত?'],
         'ready_copy' => ['en' => 'Tell us what you are building and we will shape the right team, scope, and timeline around it.', 'bn' => 'আপনি কী তৈরি করতে চান তা জানান, আমরা সেই অনুযায়ী সঠিক টিম, স্কোপ এবং টাইমলাইন সাজিয়ে দেব।'],
         'book_call' => ['en' => 'Book a Discovery Call', 'bn' => 'ডিসকভারি কল বুক করুন'],
+        'our_software' => ['en' => 'Our Software', 'bn' => 'আমাদের সফটওয়্যার'],
+        'our_software_title' => ['en' => 'Software Products Built for Real Business Operations', 'bn' => 'বাস্তব ব্যবসায়িক কাজের জন্য তৈরি সফটওয়্যার প্রোডাক্ট'],
+        'our_software_copy' => ['en' => 'Showcase your software with product copy, demo links, and visuals that help visitors understand what each solution does.', 'bn' => 'প্রতিটি সফটওয়্যার কী কাজ করে তা বোঝাতে প্রোডাক্ট কপি, ডেমো লিংক এবং ভিজ্যুয়ালসহ আপনার সফটওয়্যার তুলে ধরুন।'],
+        'call_now' => ['en' => 'Call Now', 'bn' => 'এখনই কল করুন'],
+        'watch_demo' => ['en' => 'Watch Demo', 'bn' => 'ডেমো দেখুন'],
     ],
     'heroSlides' => [
         [
@@ -96,6 +102,24 @@ return [
             'eyebrow' => ['en' => 'Built for speed, visibility, and measurable ROI.', 'bn' => 'গতি, দৃশ্যমানতা এবং বাস্তব ROI এর জন্য তৈরি।'],
         ],
     ],
+    'software' => [
+        [
+            'badge' => ['en' => 'Retail & POS', 'bn' => 'রিটেইল এবং POS'],
+            'image' => '/assets/images/service-card.svg',
+            'title' => ['en' => 'Best POS Software for Billing, Inventory, Accounting, and Daily Sales', 'bn' => 'বিলিং, ইনভেন্টরি, একাউন্টিং এবং দৈনিক বিক্রির জন্য সেরা POS সফটওয়্যার'],
+            'excerpt' => ['en' => 'A complete retail solution for shops, showrooms, and wholesale businesses.', 'bn' => 'দোকান, শোরুম এবং হোলসেল ব্যবসার জন্য একটি পূর্ণাঙ্গ রিটেইল সলিউশন।'],
+            'description' => ['en' => 'Present your POS software with pricing-friendly messaging, clear business benefits, and a direct video demo. This layout is ideal for highlighting billing flow, stock management, reporting, customer tracking, and owner dashboards in one focused section.', 'bn' => 'দাম-সহায়ক মেসেজিং, পরিষ্কার ব্যবসায়িক সুবিধা এবং সরাসরি ভিডিও ডেমোসহ আপনার POS সফটওয়্যার তুলে ধরুন। বিলিং ফ্লো, স্টক ম্যানেজমেন্ট, রিপোর্টিং, কাস্টমার ট্র্যাকিং এবং মালিকের ড্যাশবোর্ড এক জায়গায় দেখানোর জন্য এই লেআউটটি আদর্শ।'],
+            'video_url' => 'https://www.youtube.com/watch?v=ScMzIvxBSi4',
+        ],
+        [
+            'badge' => ['en' => 'School Management', 'bn' => 'স্কুল ম্যানেজমেন্ট'],
+            'image' => '/assets/images/service-card.svg',
+            'title' => ['en' => 'Smart School Management Software for Admissions, Fees, Exams, and Attendance', 'bn' => 'অ্যাডমিশন, ফি, পরীক্ষা এবং উপস্থিতির জন্য স্মার্ট স্কুল ম্যানেজমেন্ট সফটওয়্যার'],
+            'excerpt' => ['en' => 'One system for institute admins, teachers, accountants, students, and guardians.', 'bn' => 'ইনস্টিটিউট অ্যাডমিন, শিক্ষক, একাউন্টস, শিক্ষার্থী এবং অভিভাবকদের জন্য এক সিস্টেম।'],
+            'description' => ['en' => 'Use this section to explain how your education software reduces paperwork and keeps operations connected. Add your real product image and a demo video link from YouTube or Facebook to help visitors understand the workflow before they contact you.', 'bn' => 'এই সেকশনে দেখাতে পারবেন কীভাবে আপনার এডুকেশন সফটওয়্যার কাগজের কাজ কমায় এবং সব অপারেশনকে সংযুক্ত রাখে। ভিজিটররা যোগাযোগ করার আগেই যেন ওয়ার্কফ্লো বুঝতে পারে, সে জন্য এখানে আপনার আসল প্রোডাক্ট ছবি এবং YouTube বা Facebook ডেমো ভিডিও লিংক যোগ করুন।'],
+            'video_url' => 'https://www.youtube.com/watch?v=aqz-KE-bpKQ',
+        ],
+    ],
     'stats' => [
         ['value' => '50+', 'label' => ['en' => 'Projects Delivered', 'bn' => 'সম্পন্ন প্রজেক্ট']],
         ['value' => '30+', 'label' => ['en' => 'Happy Clients', 'bn' => 'সন্তুষ্ট ক্লায়েন্ট']],
@@ -106,6 +130,54 @@ return [
         'eyebrow' => ['en' => 'What We Do', 'bn' => 'আমরা যা করি'],
         'title' => ['en' => 'End-to-End Digital Delivery', 'bn' => 'শুরু থেকে শেষ পর্যন্ত ডিজিটাল ডেলিভারি'],
         'copy' => ['en' => 'Strategy, design, development, and support for products that need to ship well and grow safely.', 'bn' => 'যে প্রোডাক্টকে সুন্দরভাবে লঞ্চ ও নিরাপদে স্কেল করতে হয়, তার জন্য স্ট্র্যাটেজি, ডিজাইন, ডেভেলপমেন্ট এবং সাপোর্ট।'],
+    ],
+    'subscriptionOffers' => [
+        'eyebrow' => ['en' => 'SaaS & E-commerce Plans', 'bn' => 'SaaS ও ই-কমার্স প্ল্যান'],
+        'title' => ['en' => 'Website Subscription Packages for Growing Businesses', 'bn' => 'বর্ধনশীল ব্যবসার জন্য ওয়েবসাইট সাবস্ক্রিপশন প্যাকেজ'],
+        'copy' => ['en' => 'Launch faster with monthly website packages for SaaS products, company sites, and e-commerce businesses without a large one-time build cost.', 'bn' => 'এককালীন বড় খরচ ছাড়াই SaaS প্রোডাক্ট, কোম্পানি ওয়েবসাইট এবং ই-কমার্স ব্যবসার জন্য মাসিক ওয়েবসাইট প্যাকেজে দ্রুত শুরু করুন।'],
+        'note' => ['en' => 'Perfect for businesses that want design, development, maintenance, and steady improvement under one monthly plan.', 'bn' => 'যেসব ব্যবসা ডিজাইন, ডেভেলপমেন্ট, মেইনটেন্যান্স এবং ধারাবাহিক উন্নয়ন এক মাসিক প্ল্যানে চায়, তাদের জন্য আদর্শ।'],
+        'plans' => [
+            [
+                'badge' => ['en' => 'Starter', 'bn' => 'স্টার্টার'],
+                'name' => ['en' => 'Launch 499', 'bn' => 'লঞ্চ ৪৯৯'],
+                'price' => '499',
+                'currency' => ['en' => 'TK', 'bn' => 'টাকা'],
+                'period' => ['en' => '/month', 'bn' => '/মাস'],
+                'summary' => ['en' => 'A simple subscription website for freelancers, small shops, and new businesses that need an online presence fast.', 'bn' => 'ফ্রিল্যান্সার, ছোট দোকান এবং নতুন ব্যবসার জন্য দ্রুত অনলাইন উপস্থিতি তৈরির সহজ সাবস্ক্রিপশন ওয়েবসাইট।'],
+                'features' => [
+                    ['en' => 'Landing page or basic company website', 'bn' => 'ল্যান্ডিং পেজ বা বেসিক কোম্পানি ওয়েবসাইট'],
+                    ['en' => 'Mobile-friendly responsive layout', 'bn' => 'মোবাইল-ফ্রেন্ডলি রেসপন্সিভ লে-আউট'],
+                    ['en' => 'Basic support and monthly updates', 'bn' => 'বেসিক সাপোর্ট ও মাসিক আপডেট'],
+                ],
+            ],
+            [
+                'badge' => ['en' => 'Most Popular', 'bn' => 'সবচেয়ে জনপ্রিয়'],
+                'name' => ['en' => 'Business 999', 'bn' => 'বিজনেস ৯৯৯'],
+                'price' => '999',
+                'currency' => ['en' => 'TK', 'bn' => 'টাকা'],
+                'period' => ['en' => '/month', 'bn' => '/মাস'],
+                'summary' => ['en' => 'Best for service companies, SaaS startups, and teams that need a stronger website with lead capture and better presentation.', 'bn' => 'সার্ভিস কোম্পানি, SaaS স্টার্টআপ এবং যেসব টিম লিড ক্যাপচারসহ আরও শক্তিশালী ওয়েবসাইট চায় তাদের জন্য উপযুক্ত।'],
+                'features' => [
+                    ['en' => 'Multi-page business or SaaS website', 'bn' => 'মাল্টি-পেজ বিজনেস বা SaaS ওয়েবসাইট'],
+                    ['en' => 'Contact forms, service sections, and CTA blocks', 'bn' => 'কনট্যাক্ট ফর্ম, সার্ভিস সেকশন ও CTA ব্লক'],
+                    ['en' => 'Priority maintenance and content updates', 'bn' => 'প্রায়োরিটি মেইনটেন্যান্স ও কনটেন্ট আপডেট'],
+                ],
+                'featured' => true,
+            ],
+            [
+                'badge' => ['en' => 'E-commerce', 'bn' => 'ই-কমার্স'],
+                'name' => ['en' => 'Store 1999', 'bn' => 'স্টোর ১৯৯৯'],
+                'price' => '1999',
+                'currency' => ['en' => 'TK', 'bn' => 'টাকা'],
+                'period' => ['en' => '/month', 'bn' => '/মাস'],
+                'summary' => ['en' => 'A managed e-commerce subscription for businesses ready to sell online with products, orders, and customer-friendly storefronts.', 'bn' => 'প্রোডাক্ট, অর্ডার এবং কাস্টমার-ফ্রেন্ডলি স্টোরফ্রন্টসহ অনলাইনে বিক্রি শুরু করতে প্রস্তুত ব্যবসার জন্য ম্যানেজড ই-কমার্স সাবস্ক্রিপশন।'],
+                'features' => [
+                    ['en' => 'Online store with product listings', 'bn' => 'প্রোডাক্ট লিস্টিংসহ অনলাইন স্টোর'],
+                    ['en' => 'Order flow, inquiry options, and admin management', 'bn' => 'অর্ডার ফ্লো, ইনকোয়ারি অপশন ও অ্যাডমিন ম্যানেজমেন্ট'],
+                    ['en' => 'Ongoing support, fixes, and growth updates', 'bn' => 'চলমান সাপোর্ট, ফিক্স এবং গ্রোথ আপডেট'],
+                ],
+            ],
+        ],
     ],
     'services' => [
         [
@@ -376,7 +448,7 @@ return [
         'info_title' => ['en' => 'Get in Touch', 'bn' => 'যোগাযোগের তথ্য'],
         'form_title' => ['en' => 'Send a Message', 'bn' => 'বার্তা পাঠান'],
         'map_title' => ['en' => 'Dhaka, Bangladesh', 'bn' => 'ঢাকা, বাংলাদেশ'],
-        'office_hours' => ['en' => 'Sat - Thu, 10:00 AM - 7:00 PM', 'bn' => 'শনি - বৃহস্পতি, সকাল ১০টা - সন্ধ্যা ৭টা'],
+        'office_hours' => ['en' => 'Sat - Thu, 09:00 AM - 06:00 PM', 'bn' => 'শনি - বৃহস্পতি, সকাল ৯টা - সন্ধ্যা ৬টা'],  
         'services' => [
             ['value' => 'Web Development', 'label' => ['en' => 'Web Development', 'bn' => 'ওয়েব ডেভেলপমেন্ট']],
             ['value' => 'Mobile App', 'label' => ['en' => 'Mobile App', 'bn' => 'মোবাইল অ্যাপ']],
@@ -433,3 +505,4 @@ return [
         ],
     ],
 ];
+
